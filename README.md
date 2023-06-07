@@ -2,6 +2,8 @@
 
 ## How to visualize graphical rendering on Windows host machine when using Deepstream SDK via WSL
 
+The following is for DeepStream v6.2 running within a WSL2 instance with host having an nVidia dGPU.
+
 https://github.com/sylvain-prevost/deepstream_wsl/assets/10203873/aa01e108-2e94-4b9b-be23-587fdedee723
 
 A small number of minor changes are required.
