@@ -1,6 +1,6 @@
-## Example on how to prepare your Deepstream-WSL instance from scratch
+## Example on how to prepare your Deepstream-WSL instance from scratch  
 
-Obtaining Ubuntu-20.04 base-distro (and save it in another location)
+Obtaining Ubuntu-20.04 base-distro (and save it in another location)  
 
 ```bash
 >wsl --install -d Ubuntu-20.04
@@ -9,13 +9,13 @@ Obtaining Ubuntu-20.04 base-distro (and save it in another location)
 >wsl --import [your_distro_name] [new-distro-path (for ex: c:\wsl\[your_distro_name])] [path-to-src-tar-file]
 ```
 
-Launching your wsl distro
+Launching your wsl distro  
 ```bash
 >wsl -d [distro_name]
 ```
 
-Setting auto user log & standard work-around VPN setup
-make sure to replace USER_NAME with appropriate value
+Setting auto user log & standard work-around VPN setup  
+make sure to replace USER_NAME with appropriate value  
 ```bash
 $sudo su USER_NAME
 $sudo rm /etc/resolv.conf
@@ -26,20 +26,20 @@ $exit
 $exit
 ```
 
-Stop and Relaunch
+Stop and Relaunch  
 ```bash
 >wsl --shutdown
 >wsl -d [distro_name]
 ```
 
-Upgrade
+Upgrade  
 ```bash
 $sudo apt update
 $sudo apt upgrade
 ```
 
-For Deepstream 6.2 (adjusted from https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html#dgpu-setup-for-ubuntu)
-Install necessary packages
+For Deepstream 6.2 (adjusted from https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html#dgpu-setup-for-ubuntu)  
+Install necessary packages  
 
 ```bash
 $sudo apt install libssl1.1
@@ -47,7 +47,7 @@ $sudo apt install libgstreamer1.0-0 gstreamer1.0-tools gstreamer1.0-plugins-good
 $sudo apt install libjansson4 libyaml-cpp-dev libjsoncpp-dev protobuf-compiler gcc make git python3
 ```
 
-Install Cuda toolkit 11.8 for WSL (= without driver!)
+Install Cuda toolkit 11.8 for WSL (= without driver!)  
 ```bash
 $wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin
 $sudo mv cuda-wsl-ubuntu.pin /etc/apt/preferences.d/cuda-repository-pin-600
@@ -58,7 +58,7 @@ $sudo apt-get update
 $sudo apt-get -y install cuda
 ```
 
-Install TensorRT 8.5.2.2
+Install TensorRT 8.5.2.2  
 ```bash
 $ sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub
 $ sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /"
@@ -70,11 +70,11 @@ libnvinfer-samples=8.5.2-1+cuda11.8 libcudnn8=8.7.0.84-1+cuda11.8 libcudnn8-dev=
 python3-libnvinfer=8.5.2-1+cuda11.8 python3-libnvinfer-dev=8.5.2-1+cuda11.8
 ```
 
-Install Deepstream v6.2
-downdload deepstream pacakge from https://developer.nvidia.com/downloads/deepstream-62-620-1-amd64-deb
+Install Deepstream v6.2  
+download deepstream package from https://developer.nvidia.com/downloads/deepstream-62-620-1-amd64-deb
 and install
 ```bash
-sudo apt-get install ./deepstream-6.2_6.2.0-1_amd64.deb
+$sudo apt-get install ./deepstream-6.2_6.2.0-1_amd64.deb
 ```
 
 
