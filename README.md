@@ -42,7 +42,7 @@ $export DISPLAY=$HOST_IP:0.0
 
 Finally, start the test app:
 ```bash
-sudo ./deepstream-test1-app [path-to-input-stream]
+$sudo ./deepstream-test1-app [path-to-input-stream]
 ```
 
 
