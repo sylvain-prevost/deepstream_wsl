@@ -12,7 +12,7 @@ This is a work-around for lack of EGL symbols in the cuda for WSL2 library - it 
 
 Additionally a small number of changes are required as part of the deepstream pipeline to avoid using gstreamer element whose sources are not available (no simple way to update them).
 
-Exmaple of modifications of gst plugins are provided, as well as example of pipeline modification for 1 of the basic deepstream example (deepstream_test1).
+Example of modifications of gst plugins are provided, as well as example of pipeline modification for 1 of the basic deepstream example (deepstream_test1).
 
 ## List of adjusted gst plugins:
 - gst-nvinfer
@@ -23,7 +23,7 @@ For each of these plugins the build & install command is:
 $sudo make clean install CUDA_VER=11.8 ENABLE_WSL2=1
 ```
 
-## List of adjusted sample:
+## List of adjusted samples:
 - deepstream-test1
 
 For each of the examples the build command is:
@@ -45,6 +45,15 @@ Finally, start the test app:
 $sudo ./deepstream-test1-app [path-to-input-stream]
 ```
 
+
+#
+
+Per SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS, 1.2 (iii):
+```
+This software contains source code provided by NVIDIA Corporation.
+```
+
+#
 
 
 ## Example on how to prepare your Deepstream-WSL instance from scratch 
