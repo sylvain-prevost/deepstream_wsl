@@ -2,6 +2,8 @@
 
 ## How to visualize graphical rendering on Windows host machine when using Deepstream SDK via WSL
 
+https://github.com/sylvain-prevost/deepstream_wsl/assets/10203873/aa01e108-2e94-4b9b-be23-587fdedee723
+
 A small number of minor changes are required.
 
 This is a work-around for lack of EGL symbols in the cuda for WSL2 library - it is extremelly basic as it consist in recompiling without the EGL calls (which can be safely excluded as they relate solely to Jetson devices).
