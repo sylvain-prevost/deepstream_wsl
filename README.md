@@ -28,7 +28,7 @@ $sudo make clean install CUDA_VER=11.8 ENABLE_WSL2=1
 
 For each of the examples the build command is:
 ```bash
-$sudo make clean CUDA_VER=11.8 ENABLE_WSL2=1
+$sudo make CUDA_VER=11.8 ENABLE_WSL2=1
 ```
 
 In order to visualize on host, one need to redirect the display.. there are many ways to do it.. here is just one example:
@@ -45,7 +45,6 @@ Finally, start the test app:
 $sudo ./deepstream-test1-app [path-to-input-stream]
 ```
 
-
 #
 
 Per SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS, 1.2 (iii):
@@ -55,6 +54,38 @@ This software contains source code provided by NVIDIA Corporation.
 
 #
 
+## repo install/setup process
+
+Adjust nVidia plugins & samples
+``` bash
+$git clone https://github.com/sylvain-prevost/deepstream_wsl.git
+$cd deepstream_wsl
+$sudo cp -r sources/ /opt/nvidia/deepstream/deepstream-6.2
+```
+
+Compile/link gst-nvinfer plugin
+``` bash
+$cd /opt/nvidia/deepstream/deepstream-6.2/sources/gst-plugins/gst-nvinfer
+$sudo make clean install CUDA_VER=11.8 ENABLE_WSL2=1
+```
+
+Compile/link gst-nvdspreprocess plugin
+``` bash
+$cd /opt/nvidia/deepstream/deepstream-6.2/sources/gst-plugins/gst-nvdspreprocess
+$sudo make clean install CUDA_VER=11.8 ENABLE_WSL2=1
+```
+
+Compile/link deepstream-test1 application
+``` bash
+cd /opt/nvidia/deepstream/deepstream-6.2/sources/apps/sample_apps/deepstream-test1
+$sudo make CUDA_VER=11.8 ENABLE_WSL2=1
+```
+
+Start deepstream-test1 application
+``` bash
+cd /opt/nvidia/deepstream/deepstream-6.2/sources/apps/sample_apps/deepstream-test1
+$sudo ./deepstream-test1-app /opt/nvidia/deepstream/deepstream-6.2/samples/streams/sample_720p.h264
+```
 
 ## Example on how to prepare your Deepstream-WSL instance from scratch 
 
