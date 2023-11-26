@@ -1,4 +1,4 @@
-## Example on how to prepare your Deepstream-WSL instance from scratch  
+## Example on how to prepare your v6.2 Deepstream-WSL instance from scratch  
 
 Obtaining Ubuntu-20.04 base-distro (and save it in another location)  
 

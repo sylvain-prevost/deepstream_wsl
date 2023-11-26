@@ -2,8 +2,8 @@
 
 ## How to visualize graphical rendering on Windows host machine when using Deepstream SDK via WSL
 
-The following is for DeepStream v6.3 running within a WSL2 instance with host having an nVidia dGPU.
-(for v6.2, [click here](./README_6_2.md))
+The following is for DeepStream v6.2 running within a WSL2 instance with host having an nVidia dGPU.
+(for v6.3, [click here](./README.md))
 
 https://github.com/sylvain-prevost/deepstream_wsl/assets/10203873/aa01e108-2e94-4b9b-be23-587fdedee723
 
@@ -21,7 +21,7 @@ Example of modifications of gst plugins are provided, as well as example of pipe
 
 For each of these plugins the build & install command is:
 ```bash
-$sudo make clean install CUDA_VER=12.1 ENABLE_WSL2=1
+$sudo make clean install CUDA_VER=11.8 ENABLE_WSL2=1
 ```
 
 ## List of adjusted samples:
@@ -29,7 +29,7 @@ $sudo make clean install CUDA_VER=12.1 ENABLE_WSL2=1
 
 For each of the examples the build command is:
 ```bash
-$sudo make CUDA_VER=12.1 ENABLE_WSL2=1
+$sudo make CUDA_VER=11.8 ENABLE_WSL2=1
 ```
 
 In order to visualize on host, one need to redirect the display.. there are many ways to do it.. here is just one example:
@@ -61,34 +61,34 @@ Adjust nVidia plugins & samples
 ``` bash
 $git clone https://github.com/sylvain-prevost/deepstream_wsl.git
 $cd deepstream_wsl
-$sudo cp -r sources_6_3/. /opt/nvidia/deepstream/deepstream-6.3/sources
+$sudo cp -r sources_6_2/. /opt/nvidia/deepstream/deepstream-6.2/sources
 ```
 
 Compile/link gst-nvinfer plugin
 ``` bash
-$cd /opt/nvidia/deepstream/deepstream-6.3/sources/gst-plugins/gst-nvinfer
-$sudo make clean install CUDA_VER=12.1 ENABLE_WSL2=1
+$cd /opt/nvidia/deepstream/deepstream-6.2/sources/gst-plugins/gst-nvinfer
+$sudo make clean install CUDA_VER=11.8 ENABLE_WSL2=1
 ```
 
 Compile/link gst-nvdspreprocess plugin
 ``` bash
-$cd /opt/nvidia/deepstream/deepstream-6.3/sources/gst-plugins/gst-nvdspreprocess
-$sudo make clean install CUDA_VER=12.1 ENABLE_WSL2=1
+$cd /opt/nvidia/deepstream/deepstream-6.2/sources/gst-plugins/gst-nvdspreprocess
+$sudo make clean install CUDA_VER=11.8 ENABLE_WSL2=1
 ```
 
 Compile/link deepstream-test1 application
 ``` bash
-$cd /opt/nvidia/deepstream/deepstream-6.3/sources/apps/sample_apps/deepstream-test1
-$sudo make CUDA_VER=12.1 ENABLE_WSL2=1
+$cd /opt/nvidia/deepstream/deepstream-6.2/sources/apps/sample_apps/deepstream-test1
+$sudo make CUDA_VER=11.8 ENABLE_WSL2=1
 ```
 
 Start deepstream-test1 application
 ``` bash
-$cd /opt/nvidia/deepstream/deepstream-6.3/sources/apps/sample_apps/deepstream-test1
-$sudo ./deepstream-test1-app /opt/nvidia/deepstream/deepstream-6.3/samples/streams/sample_720p.h264
+$cd /opt/nvidia/deepstream/deepstream-6.2/sources/apps/sample_apps/deepstream-test1
+$sudo ./deepstream-test1-app /opt/nvidia/deepstream/deepstream-6.2/samples/streams/sample_720p.h264
 ```
 
-## Example on how to prepare your Deepstream_v6.3-WSL instance from scratch 
+## Example on how to prepare your Deepstream_v6.2-WSL instance from scratch 
 
-[click here](./Wsl_6_3_prep.md)
+[click here](./Wsl_6_2_prep.md)
 
