@@ -27,7 +27,8 @@ CFLAGS+= -fPIC -std=c++11 -DDS_VERSION=\"6.2.0\" \
 	 -I /usr/local/cuda-$(CUDA_VER)/include \
 	 -I ../../includes \
 	 -I ../gst-nvdspreprocess/include \
-	 -I ../../libs/nvdsinfer -DNDEBUG
+	 -I ../../libs/nvdsinfer -DNDEBUG \
+	 -w
 
 ifeq ($(ENABLE_WSL2),1)
 CFLAGS+= -DENABLE_WSL2
