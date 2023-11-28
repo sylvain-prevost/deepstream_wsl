@@ -90,32 +90,35 @@ $sudo make CUDA_VER=12.1 ENABLE_WSL2=1
 ## Python
 
 Add support for compiling bindings, wheel, etc.. 
-```
+``` bash
 $sudo apt install -y python3-pip python3.8-dev cmake g++ build-essential libtool m4 autoconf automake
 $sudo apt install -y python3-gi python3-dev python3-gst-1.0 python-gi-dev 
 $sudo apt install -y libglib2.0-dev libglib2.0-dev-bin libgstreamer1.0-dev libgirepository1.0-dev libcairo2-dev
 ```
 
 Add Deepstream python support (from https://github.com/NVIDIA-AI-IOT/deepstream_python_apps)
-```
-$cd /opt/nvidia/deepstream/deepstream-6.3/sources
-$git clone https://github.com/NVIDIA-AI-IOT/deepstream_python_apps
-$cd deepstream_python_apps
-$git submodule update --init
+``` bash
+$cd ~
+$sudo git clone https://github.com/NVIDIA-AI-IOT/deepstream_python_apps tmp_deepstream_wsl
+$sudo cp -v -r ~/tmp_deepstream_wsl/. /opt/nvidia/deepstream/deepstream-6.3/sources/deepstream_python_apps
+$sudo rm -r ~/tmp_deepstream_wsl
+$cd /opt/nvidia/deepstream/deepstream-6.3/sources/deepstream_python_apps
+$sudo git submodule update --init
 ```
 
 Compile Bindings, build and install wheel (Note: this is done here as it must include deepstream_wsl plugin sources updates)
-```
-cd bindings
-mkdir build
-cd build
-cmake ..
-make -j$(nproc)
+``` bash
+$cd bindings
+$sudo rm -r build
+$sudo mkdir build
+$cd build
+$sudo cmake ..
+$sudo make -j$(nproc)
 ```
 
 Install updated wheel
-```
-pip3 install ./pyds-1.1.8-py3-none*.whl
+``` bash
+$pip3 install ./pyds-1.1.8-py3-none*.whl
 ```
 
 ## Executing samples
@@ -130,8 +133,8 @@ $sudo ./deepstream-test1-app /opt/nvidia/deepstream/deepstream-6.3/samples/strea
 ### Python
 Start python deepstream-test1 application (wsl)
 ``` bash
-$cd /opt/nvidia/deepstream/deepstream-6.3/sources/deepstream_python_apps/apps/sample_apps/deepstream-test1
-$python3 deepstream_test_1_wsl.py /opt/nvidia/deepstream/deepstream-6.3/samples/streams/sample_720p.h26
+$cd /opt/nvidia/deepstream/deepstream-6.3/sources/deepstream_python_apps/apps/deepstream-test1
+$python3 deepstream_test_1_wsl.py /opt/nvidia/deepstream/deepstream-6.3/samples/streams/sample_720p.h264
 ```
 
 ## Example on how to prepare your Deepstream_v6.3-WSL instance from scratch 
