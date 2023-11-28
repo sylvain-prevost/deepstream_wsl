@@ -18,6 +18,10 @@ make clean install CUDA_VER=12.1 ENABLE_WSL2=1
 cd /opt/nvidia/deepstream/deepstream-6.3/sources/apps/sample_apps/deepstream-test1
 make CUDA_VER=12.1 ENABLE_WSL2=1
 
+# build deepstream-test2 C++ app
+cd /opt/nvidia/deepstream/deepstream-6.3/sources/apps/sample_apps/deepstream-test2
+make CUDA_VER=12.1 ENABLE_WSL2=1
+
 # add support for python build
 apt install -y python3-pip python3.8-dev cmake g++ build-essential  libtool m4 autoconf automake
 apt install -y python3-gi python3-dev python3-gst-1.0 python-gi-dev 

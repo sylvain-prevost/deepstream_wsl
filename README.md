@@ -26,6 +26,7 @@ $sudo make clean install CUDA_VER=12.1 ENABLE_WSL2=1
 
 ## List of adjusted samples (C++ & Python):
 - deepstream-test1
+- deepstream-test2
 
 For each of the C++ examples the build command is:
 ```bash
@@ -87,6 +88,12 @@ $cd /opt/nvidia/deepstream/deepstream-6.3/sources/apps/sample_apps/deepstream-te
 $sudo make CUDA_VER=12.1 ENABLE_WSL2=1
 ```
 
+Compile/link deepstream-test2 application
+``` bash
+$cd /opt/nvidia/deepstream/deepstream-6.3/sources/apps/sample_apps/deepstream-test2
+$sudo make CUDA_VER=12.1 ENABLE_WSL2=1
+```
+
 ## Python
 
 Add support for compiling bindings, wheel, etc.. 
@@ -124,10 +131,16 @@ $pip3 install ./pyds-1.1.8-py3-none*.whl
 ## Executing samples
 
 ### C++
-Start deepstream-test1 application
+Start deepstream-test1 application (wsl)
 ``` bash
 $cd /opt/nvidia/deepstream/deepstream-6.3/sources/apps/sample_apps/deepstream-test1
 $sudo ./deepstream-test1-app /opt/nvidia/deepstream/deepstream-6.3/samples/streams/sample_720p.h264
+```
+
+Start deepstream-test2 application (wsl)
+``` bash
+$cd /opt/nvidia/deepstream/deepstream-6.3/sources/apps/sample_apps/deepstream-test2
+$sudo ./deepstream-test2-app /opt/nvidia/deepstream/deepstream-6.3/samples/streams/sample_720p.h264
 ```
 
 ### Python
@@ -135,6 +148,12 @@ Start python deepstream-test1 application (wsl)
 ``` bash
 $cd /opt/nvidia/deepstream/deepstream-6.3/sources/deepstream_python_apps/apps/deepstream-test1
 $python3 deepstream_test_1_wsl.py /opt/nvidia/deepstream/deepstream-6.3/samples/streams/sample_720p.h264
+```
+
+Start python deepstream-test2 application (wsl)
+``` bash
+$cd /opt/nvidia/deepstream/deepstream-6.3/sources/deepstream_python_apps/apps/deepstream-test2
+$python3 deepstream_test_2_wsl.py /opt/nvidia/deepstream/deepstream-6.3/samples/streams/sample_720p.h264
 ```
 
 ## Example on how to prepare your Deepstream_v6.3-WSL instance from scratch 
