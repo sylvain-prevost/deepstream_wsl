@@ -156,7 +156,6 @@ $cd /opt/nvidia/deepstream/deepstream-6.3/sources/deepstream_python_apps/apps/de
 $python3 deepstream_test_2_wsl.py /opt/nvidia/deepstream/deepstream-6.3/samples/streams/sample_720p.h264
 ```
 
-https://github.com/sylvain-prevost/deepstream_wsl/assets/10203873/0fa46c68-8e7e-4557-9c8a-d9c0ee35c843
 
 
 ## Example on how to prepare your Deepstream_v6.3-WSL instance from scratch 
