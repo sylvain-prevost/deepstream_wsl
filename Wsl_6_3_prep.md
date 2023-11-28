@@ -32,22 +32,38 @@ Stop and Relaunch
 >wsl -d [distro_name]
 ```
 
-Upgrade  
+## At that point you can: either run script ([Wsl_6.3_prep.sh](./Wsl_6_3_prep.sh))
+
+```bash
+$cd ~
+$chmod +x Wsl_6_3_prep.sh
+$sudo ./Wsl_6_3_prep.sh
+```
+
+## Or step-by-step
+
+Handle /usr/lib/wsl/lib/libcuda.so soft-link warning
+```bash
+$sudo rm /usr/lib/wsl/lib/libcuda.so /usr/lib/wsl/lib/libcuda.so.1
+$sudo ln -s /usr/lib/wsl/lib/libcuda.so.1.1 /usr/lib/wsl/lib/libcuda.so
+$sudo ln -s /usr/lib/wsl/lib/libcuda.so.1.1 /usr/lib/wsl/lib/libcuda.so.1
+```
+
+Default Upgrade  
 ```bash
 $sudo apt update
-$sudo apt upgrade
+$sudo apt -y upgrade
 ```
 
-For Deepstream 6.3 (adjusted from https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html#dgpu-setup-for-ubuntu)  
-Install necessary packages  
+Install dependencies required for Deepstream 6.3 (from https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html#dgpu-setup-for-ubuntu)  
 
 ```bash
-$sudo apt install libssl1.1
-$sudo apt install libgstreamer1.0-0 gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav libgstreamer-plugins-base1.0-dev libgstrtspserver-1.0-0
-$sudo apt install libjansson4 libyaml-cpp-dev libjsoncpp-dev protobuf-compiler gcc make git python3
+$sudo apt install -y libssl1.1
+$sudo apt install -y libgstreamer1.0-0 gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav libgstreamer-plugins-base1.0-dev libgstrtspserver-1.0-0
+$sudo apt install -y libjansson4 libyaml-cpp-dev libjsoncpp-dev protobuf-compiler gcc make git python3
 ```
 
-Install Cuda toolkit 12.1 for WSL (= without driver!)  
+Install Cuda toolkit 12.1 for WSL (= does not install linux dGPU driver)
 ```bash
 $wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-wsl-ubuntu.pin
 $sudo mv cuda-wsl-ubuntu.pin /etc/apt/preferences.d/cuda-repository-pin-600
@@ -55,15 +71,15 @@ $wget https://developer.download.nvidia.com/compute/cuda/12.1.0/local_installers
 $sudo dpkg -i cuda-repo-wsl-ubuntu-12-1-local_12.1.0-1_amd64.deb
 $sudo cp /var/cuda-repo-wsl-ubuntu-12-1-local/cuda-*-keyring.gpg /usr/share/keyrings/
 $sudo apt-get update
-$sudo apt-get -y install cuda
+$sudo apt-get install -y cuda
 ```
 
 Install TensorRT 8.5.3.1 (note: '+cuda11.8' is not a typo)
 ```bash
-$ sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub
-$ sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /"
-$ sudo apt-get update
-$ sudo apt-get install libnvinfer8=8.5.3-1+cuda11.8 libnvinfer-plugin8=8.5.3-1+cuda11.8 libnvparsers8=8.5.3-1+cuda11.8 \
+$sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub
+$sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /"
+$sudo apt-get update
+$sudo apt-get install -y libnvinfer8=8.5.3-1+cuda11.8 libnvinfer-plugin8=8.5.3-1+cuda11.8 libnvparsers8=8.5.3-1+cuda11.8 \
 libnvonnxparsers8=8.5.3-1+cuda11.8 libnvinfer-bin=8.5.3-1+cuda11.8 libnvinfer-dev=8.5.3-1+cuda11.8 \
 libnvinfer-plugin-dev=8.5.3-1+cuda11.8 libnvparsers-dev=8.5.3-1+cuda11.8 libnvonnxparsers-dev=8.5.3-1+cuda11.8 \
 libnvinfer-samples=8.5.3-1+cuda11.8 libcudnn8=8.7.0.84-1+cuda11.8 libcudnn8-dev=8.7.0.84-1+cuda11.8 \
@@ -75,6 +91,4 @@ Install Deepstream v6.3
 $sudo wget --content-disposition 'https://api.ngc.nvidia.com/v2/resources/nvidia/deepstream/versions/6.3/files/deepstream-6.3_6.3.0-1_amd64.deb'
 $sudo apt-get install ./deepstream-6.3_6.3.0-1_amd64.deb
 ```
-
-note: final message similar to '/sbin/ldconfig.real: /usr/lib/wsl/lib/libcuda.so.1 is not a symbolic link' is expected and not an error.
 
